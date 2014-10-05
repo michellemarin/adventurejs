@@ -1,0 +1,31 @@
+* {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+a:link {
+  color: #A3B3BF; }
+
+a:visted {
+  color: #083451; }
+
+p {
+  text-align: left;
+  text-decoration: none;
+  color: #A3B3BF;
+  font-family: 'Open Sans', Verdana, sans-serif;
+  font-size: 0.95em;
+  line-height: 25px;
+  margin-top: 25px; }
+
+h1 {
+  color: #083451;
+  text-transform: uppercase;
+  font-family: 'Oswald', Verdana, sans-serif;
+  font-size: 4em; }
+
+h2 {
+  text-transform: uppercase;
+  font-family: 'Open Sans', Verdana, sans-serif;
+  color: #106DB3;
+  font-size: 2.2em; }
