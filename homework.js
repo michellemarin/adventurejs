@@ -23,54 +23,84 @@ console.log('How to have a not so fancy pants js adventure');
 var continueResponse = prompt('Are you sure you want to continue? This is your last chance. After this there is no turning back.', 'of course!');
 allTheAnswers.push(continueResponse);
 
-console.log('You said "' + continueResponse + '". Just wanted to make sure you understand there is no turning back now');
-
-var whichPill = prompt("Do you want to take the (RED) pill or (BLUE) pill?", "RED");
-allTheAnswers.push(whichPill);
-
-if (whichPill === "RED") {
-    console.log("take the red pill");
-    usingMatrix();
+if(continueResponse === 'of course!') {
+  console.log("you said of course!");
+  yesDoIt();
 } else {
-    console.log("take the blue");
-    usingMatrix();
+  console.log('You dont continue');
+  noGo();
 }
 
-function usingMatrix() {
-  console.log("You take the red pill: you stay in Wonderland and I show you how deep the rabbit hole goes.");
-  console.log("You take the blue pill: the story ends, you wake up in your bed and believe whatever you want to believe.");
+console.log('You said "' + continueResponse + '". Just wanted to make sure you understand there is no turning back now');
 
-  var isMatrixDumb = ask('Do you think the matrix is dumb?', 'Yep');
-  allTheAnswers.push(isMatrixDumb);
+function yesDoIt() {
+  var whichPill = ask("Do you want to take the (RED) pill or (BLUE) pill?", "RED");
+  allTheAnswers.push(whichPill);
 
-  switch ( isMatrixDumb ){
-      case "Yep":
-        p("Yes that is correct, so is Neo.");
+  switch ( whichPill ){
+      case "RED":
+        console.log("You take the red pill.");
+        redPill();
         break;
-      case "No":
-        p("Well you are dumb.");
+      case "BLUE":
+        console.log("You take the blue pill.");
+        bluePill();
         break;
       default:
-        p("I'm guessing you're half dumb.");
+        alert("I'm guessing you're not sure?");
+  }
+
+  console.log('You said you want to take the ' + whichPill + ' pill.');
+}
+
+
+function redPill() {
+  var rabbitHole = ask('You take the red pill: you stay in Wonderland and I show you how deep the rabbit hole goes. Do you want to see how deep this rabbit hole goes?', 'Yep');
+  allTheAnswers.push(rabbitHole);
+
+  switch ( rabbitHole ){
+      case "Yep":
+        alert("You will now enter the Matrix.");
+        break;
+      case "No":
+        alert("Well you are a scardy cat!");
+        break;
+      default:
+        alert("I'm guessing you're not sure?");
   }
 }
 
-function myFunction() {
-    var flavor = prompt("What is your favorite ice cream flavor", "chocolate");
-    if (flavor != null) {
-        document.getElementById("demo").innerHTML =
-        "Hello a little birdy told me that you like " + flavor + " as your favorite ice cream flavor!";
-    }
+function bluePill() {
+  var storyEnds = ask('You take the blue pill: the story ends, you wake up in your bed and believe whatever you want to believe. Do you really want this?', 'Yep');
+  allTheAnswers.push(storyEnds);
+
+  switch ( storyEnds ){
+      case "Yep":
+        alert("The story ends, you have a boring rest of your life, get fat and lose your hair and then die.");
+        break;
+      case "No":
+        alert("You go back and take the red pill, and enter the Matrix.");
+        break;
+      default:
+        alert("I'm guessing you're just in limbo world now...");
+  }
 }
 
-function yourFunction() {
-    var x;
-    if (confirm("Do you like pancakes?") == true) {
-        x = "You said yes!";
-    } else {
-        x = "Are you a robot...who doesn't like pancakes?";
-    }
-    document.getElementById("newDemo").innerHTML = x;
+function noPill() {
+  console.log("No pill for you chump. Indecisiveness is not rewarded!");
+}
+
+function noGo() {
+  console.log("Sorry game over!");
 }
 
 allTheAnswers.forEach(function(answer) { console.log(answer); });
+
+
+function myFunction() {
+    var isMatrixDumb = prompt("Do you think the Matrix is dumb? It's okay you can be honest, really.", "Yep");
+    if (isMatrixDumb != null) {
+        document.getElementById("demo").innerHTML =
+        "you said " + isMatrixDumb + "! Thanks for taking the Matrix survey!";
+    }
+}
